@@ -369,5 +369,18 @@
       "emoji": "🎨"
     }
   },
-  "_comment": "Generated from shared/holidays.js by scripts/sync-shared.js — do not edit by hand. Deploy to update all devices."
+  "_comment": "Generated from shared/holidays.js by scripts/sync-shared.js — do not edit by hand. Deploy to update all devices.",
+  "_observances": {
+    "2083": [
+      {
+        "from": "2-1",
+        "to": "2-31",
+        "name": "मलमास (अधिक मास)",
+        "nameEn": "Mala Maas (Adhik Maas)",
+        "type": "observance",
+        "emoji": "🌙",
+        "note": "Extra lunar month — auspicious ceremonies traditionally avoided"
+      }
+    ]
+  }
 }

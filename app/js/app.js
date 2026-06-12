@@ -156,6 +156,7 @@ const views = {
     const adDate = new Date();
     const holiday = HolidayManager.getHoliday(bs.year, bs.month, bs.day);
     const isSat = bs.dayOfWeek === 6;
+    const observances = HolidayManager.getTodayObservances(conv);
     const upcoming = HolidayManager.getUpcomingHolidays(conv, 4);
     const todayEvs = eventsOn(bs.year, bs.month, bs.day);
     const nextEvs = state.events
@@ -173,6 +174,7 @@ const views = {
         <div class="hero-clock" id="hero-clock"></div>
         ${holiday ? `<div class="hero-badge">${holiday.emoji} ${state.lang === 'np' ? holiday.name : holiday.nameEn}</div>`
         : isSat ? `<div class="hero-badge">🔴 ${t('saturday')}</div>` : ''}
+        ${observances.map((o) => `<div class="hero-badge" title="${o.note || ''}">${o.emoji} ${state.lang === 'np' ? o.name : o.nameEn}</div>`).join('')}
         <div class="hero-actions">
           <button class="btn" id="copy-today">📋 ${t('copy')}</button>
           <button class="btn" id="share-today">📤 ${t('share')}</button>

@@ -72,6 +72,21 @@ const HOLIDAYS = {
   }
 };
 
+/**
+ * Period observances — multi-day religious/cultural periods (not holidays).
+ * Keyed by BS year; from/to are inclusive 'month-day' keys.
+ */
+const OBSERVANCES = {
+  2083: [
+    {
+      from: '2-1', to: '2-31',
+      name: 'मलमास (अधिक मास)', nameEn: 'Mala Maas (Adhik Maas)',
+      type: 'observance', emoji: '🌙',
+      note: 'Extra lunar month — auspicious ceremonies traditionally avoided',
+    },
+  ],
+};
+
 class HolidayManager {
   /**
    * Get holiday info for a BS date
@@ -153,6 +168,28 @@ class HolidayManager {
   static isSaturday(dayOfWeek) {
     return dayOfWeek === 6;
   }
+
+  /**
+   * Get observance periods active on a BS date (e.g. Mala Maas, Shraddha Paksha)
+   */
+  static getObservances(bsYear, bsMonth, bsDay) {
+    const periods = OBSERVANCES[bsYear];
+    if (!periods) return [];
+    const key = bsMonth * 100 + bsDay;
+    const toKey = (md) => {
+      const [m, d] = md.split('-').map(Number);
+      return m * 100 + d;
+    };
+    return periods.filter((p) => key >= toKey(p.from) && key <= toKey(p.to));
+  }
+
+  /**
+   * Get observances active today
+   */
+  static getTodayObservances(converter) {
+    const today = converter.getToday().bs;
+    return HolidayManager.getObservances(today.year, today.month, today.day);
+  }
 }
 
 /**
@@ -166,6 +203,17 @@ HolidayManager.applyRemoteData = function (data) {
     if (JSON.stringify(HOLIDAYS[y]) !== JSON.stringify(data[y])) {
       HOLIDAYS[y] = data[y];
       changed = true;
+    }
+  }
+  // Observances ride along under '_observances' so that clients built before
+  // this feature (which skip underscore keys) ignore them safely.
+  const obs = (data || {})._observances;
+  if (obs) {
+    for (const y of Object.keys(obs)) {
+      if (JSON.stringify(OBSERVANCES[y]) !== JSON.stringify(obs[y])) {
+        OBSERVANCES[y] = obs[y];
+        changed = true;
+      }
     }
   }
   return changed;
@@ -195,7 +243,8 @@ HolidayManager.loadRemote = function (url, onUpdate) {
 if (typeof window !== 'undefined') {
   window.HolidayManager = HolidayManager;
   window.HOLIDAYS = HOLIDAYS;
+  window.OBSERVANCES = OBSERVANCES;
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { HOLIDAYS, HolidayManager };
+  module.exports = { HOLIDAYS, HolidayManager, OBSERVANCES };
 }

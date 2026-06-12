@@ -22,10 +22,11 @@ for (const file of FILES) {
 }
 // Regenerate the live holiday JSON served at miti-five.vercel.app/data/holidays.json
 // from the same shared source, so the remote data can never drift from the bundled data.
-const { HOLIDAYS } = require(path.join(ROOT, 'shared', 'holidays.js'));
+const { HOLIDAYS, OBSERVANCES } = require(path.join(ROOT, 'shared', 'holidays.js'));
 const json = JSON.stringify(
   {
     _comment: 'Generated from shared/holidays.js by scripts/sync-shared.js — do not edit by hand. Deploy to update all devices.',
+    _observances: OBSERVANCES,
     ...HOLIDAYS,
   },
   null,

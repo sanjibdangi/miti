@@ -339,9 +339,26 @@ class MitiApp {
   renderHolidaysList() {
     const container = document.getElementById('expanded-content');
     const upcoming = HolidayManager.getUpcomingHolidays(this.converter, 15);
+    const observances = HolidayManager.getTodayObservances(this.converter);
 
     let html = `
       <div class="holidays-view">
+    `;
+
+    for (const o of observances) {
+      html += `
+        <div class="holiday-item holiday-type-religious observance-banner">
+          <div class="holiday-emoji">${o.emoji}</div>
+          <div class="holiday-info">
+            <div class="holiday-name">${o.nameEn} — ongoing</div>
+            <div class="holiday-name-np">${o.name}</div>
+            <div class="holiday-dates">${o.note || ''}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    html += `
         <h3 class="section-title">🎊 Upcoming Holidays & Festivals</h3>
         <div class="holiday-list">
     `;
