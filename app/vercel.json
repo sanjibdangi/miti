@@ -1,7 +1,4 @@
 {
-  "installCommand": "",
-  "buildCommand": "",
-  "outputDirectory": "app",
   "headers": [
     {
       "source": "/data/(.*)",

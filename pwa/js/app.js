@@ -20,6 +20,16 @@ class MitiApp {
     this.bindEvents();
     this.startClock();
 
+    HolidayManager.loadRemote('https://miti-five.vercel.app/data/holidays.json', () => {
+      if (this.isPWA) {
+        this.renderPWAHeader();
+        this.renderExpanded();
+      } else {
+        this.renderPill();
+        if (this.isExpanded) this.renderExpanded();
+      }
+    });
+
     if (this.isPWA) {
       // PWA mode: render header card + expanded content
       this.renderPWAHeader();

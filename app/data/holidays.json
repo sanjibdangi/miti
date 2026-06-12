@@ -1,68 +1,373 @@
 {
-  "_comment": "Live holiday data — edit this file and deploy; all devices refresh automatically on next launch. Keys are 'month-day' in BS.",
   "2082": {
-    "1-1":   { "name": "नयाँ वर्ष", "nameEn": "New Year", "type": "national", "emoji": "🎊" },
-    "1-11":  { "name": "लोकतन्त्र दिवस", "nameEn": "Democracy Day", "type": "national", "emoji": "🏛️" },
-    "1-18":  { "name": "श्रम दिवस", "nameEn": "Labour Day", "type": "national", "emoji": "⚒️" },
-    "1-29":  { "name": "बुद्ध जयन्ती", "nameEn": "Buddha Jayanti", "type": "religious", "emoji": "🙏" },
-    "2-15":  { "name": "गणतन्त्र दिवस", "nameEn": "Republic Day", "type": "national", "emoji": "🇳🇵" },
-    "3-15":  { "name": "हरि शयनी एकादशी", "nameEn": "Hari Shayani Ekadashi", "type": "religious", "emoji": "🙏" },
-    "4-2":   { "name": "श्रावण शुक्ल पूर्णिमा", "nameEn": "Janai Purnima", "type": "religious", "emoji": "🧵" },
-    "4-3":   { "name": "गाईजात्रा", "nameEn": "Gaijatra", "type": "festival", "emoji": "🐄" },
-    "4-17":  { "name": "श्री कृष्ण जन्माष्टमी", "nameEn": "Krishna Janmashtami", "type": "religious", "emoji": "🙏" },
-    "5-3":   { "name": "तीज", "nameEn": "Teej", "type": "festival", "emoji": "💃" },
-    "5-18":  { "name": "इन्द्रजात्रा", "nameEn": "Indra Jatra", "type": "festival", "emoji": "🎭" },
-    "5-19":  { "name": "संविधान दिवस", "nameEn": "Constitution Day", "type": "national", "emoji": "📜" },
-    "6-3":   { "name": "घटस्थापना", "nameEn": "Ghatasthapana", "type": "festival", "emoji": "🌱" },
-    "6-10":  { "name": "फूलपाती", "nameEn": "Fulpati", "type": "festival", "emoji": "🌸" },
-    "6-11":  { "name": "महा अष्टमी", "nameEn": "Maha Astami", "type": "festival", "emoji": "🙏" },
-    "6-12":  { "name": "महा नवमी", "nameEn": "Maha Navami", "type": "festival", "emoji": "🙏" },
-    "6-13":  { "name": "विजया दशमी", "nameEn": "Dashain", "type": "festival", "emoji": "🎊" },
-    "6-14":  { "name": "एकादशी", "nameEn": "Ekadashi", "type": "festival", "emoji": "🙏" },
-    "6-15":  { "name": "द्वादशी", "nameEn": "Dwadashi", "type": "festival", "emoji": "🙏" },
-    "6-28":  { "name": "कोजाग्रत पूर्णिमा", "nameEn": "Kojagrat Purnima", "type": "festival", "emoji": "🌕" },
-    "7-13":  { "name": "लक्ष्मी पूजा", "nameEn": "Tihar - Laxmi Puja", "type": "festival", "emoji": "🪔" },
-    "7-14":  { "name": "गोवर्धन पूजा", "nameEn": "Tihar - Govardhan Puja", "type": "festival", "emoji": "🐄" },
-    "7-15":  { "name": "भाई टीका", "nameEn": "Tihar - Bhai Tika", "type": "festival", "emoji": "👫" },
-    "7-17":  { "name": "छठ पर्व", "nameEn": "Chhath Parva", "type": "festival", "emoji": "🌅" },
-    "9-1":   { "name": "माघी", "nameEn": "Maghi", "type": "festival", "emoji": "🌊" },
-    "10-7":  { "name": "सरस्वती पूजा", "nameEn": "Saraswati Puja", "type": "religious", "emoji": "📚" },
-    "10-13": { "name": "प्रजातन्त्र दिवस", "nameEn": "National Democracy Day", "type": "national", "emoji": "🏛️" },
-    "11-8":  { "name": "महा शिवरात्रि", "nameEn": "Maha Shivaratri", "type": "religious", "emoji": "🔱" },
-    "11-27": { "name": "फागु पूर्णिमा", "nameEn": "Holi", "type": "festival", "emoji": "🎨" },
-    "12-11": { "name": "शहीद दिवस", "nameEn": "Martyrs Day", "type": "national", "emoji": "🕯️" },
-    "12-17": { "name": "राम नवमी", "nameEn": "Ram Navami", "type": "religious", "emoji": "🙏" }
+    "1-1": {
+      "name": "नयाँ वर्ष",
+      "nameEn": "New Year",
+      "type": "national",
+      "emoji": "🎊"
+    },
+    "1-11": {
+      "name": "लोकतन्त्र दिवस",
+      "nameEn": "Democracy Day",
+      "type": "national",
+      "emoji": "🏛️"
+    },
+    "1-18": {
+      "name": "श्रम दिवस",
+      "nameEn": "Labour Day",
+      "type": "national",
+      "emoji": "⚒️"
+    },
+    "1-29": {
+      "name": "बुद्ध जयन्ती",
+      "nameEn": "Buddha Jayanti",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "2-15": {
+      "name": "गणतन्त्र दिवस",
+      "nameEn": "Republic Day",
+      "type": "national",
+      "emoji": "🇳🇵"
+    },
+    "3-15": {
+      "name": "हरि शयनी एकादशी",
+      "nameEn": "Hari Shayani Ekadashi",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "4-2": {
+      "name": "श्रावण शुक्ल पूर्णिमा",
+      "nameEn": "Janai Purnima",
+      "type": "religious",
+      "emoji": "🧵"
+    },
+    "4-3": {
+      "name": "गाईजात्रा",
+      "nameEn": "Gaijatra",
+      "type": "festival",
+      "emoji": "🐄"
+    },
+    "4-17": {
+      "name": "श्री कृष्ण जन्माष्टमी",
+      "nameEn": "Krishna Janmashtami",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "5-3": {
+      "name": "तीज",
+      "nameEn": "Teej",
+      "type": "festival",
+      "emoji": "💃"
+    },
+    "5-18": {
+      "name": "इन्द्रजात्रा",
+      "nameEn": "Indra Jatra",
+      "type": "festival",
+      "emoji": "🎭"
+    },
+    "5-19": {
+      "name": "संविधान दिवस",
+      "nameEn": "Constitution Day",
+      "type": "national",
+      "emoji": "📜"
+    },
+    "6-3": {
+      "name": "घटस्थापना",
+      "nameEn": "Ghatasthapana",
+      "type": "festival",
+      "emoji": "🌱"
+    },
+    "6-10": {
+      "name": "फूलपाती",
+      "nameEn": "Fulpati",
+      "type": "festival",
+      "emoji": "🌸"
+    },
+    "6-11": {
+      "name": "महा अष्टमी",
+      "nameEn": "Maha Astami",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "6-12": {
+      "name": "महा नवमी",
+      "nameEn": "Maha Navami",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "6-13": {
+      "name": "विजया दशमी",
+      "nameEn": "Dashain",
+      "type": "festival",
+      "emoji": "🎊"
+    },
+    "6-14": {
+      "name": "एकादशी",
+      "nameEn": "Ekadashi",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "6-15": {
+      "name": "द्वादशी",
+      "nameEn": "Dwadashi",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "6-28": {
+      "name": "कोजाग्रत पूर्णिमा",
+      "nameEn": "Kojagrat Purnima",
+      "type": "festival",
+      "emoji": "🌕"
+    },
+    "7-13": {
+      "name": "लक्ष्मी पूजा",
+      "nameEn": "Tihar - Laxmi Puja",
+      "type": "festival",
+      "emoji": "🪔"
+    },
+    "7-14": {
+      "name": "गोवर्धन पूजा",
+      "nameEn": "Tihar - Govardhan Puja",
+      "type": "festival",
+      "emoji": "🐄"
+    },
+    "7-15": {
+      "name": "भाई टीका",
+      "nameEn": "Tihar - Bhai Tika",
+      "type": "festival",
+      "emoji": "👫"
+    },
+    "7-17": {
+      "name": "छठ पर्व",
+      "nameEn": "Chhath Parva",
+      "type": "festival",
+      "emoji": "🌅"
+    },
+    "9-1": {
+      "name": "माघी",
+      "nameEn": "Maghi",
+      "type": "festival",
+      "emoji": "🌊"
+    },
+    "10-7": {
+      "name": "सरस्वती पूजा",
+      "nameEn": "Saraswati Puja",
+      "type": "religious",
+      "emoji": "📚"
+    },
+    "10-13": {
+      "name": "प्रजातन्त्र दिवस",
+      "nameEn": "National Democracy Day",
+      "type": "national",
+      "emoji": "🏛️"
+    },
+    "11-8": {
+      "name": "महा शिवरात्रि",
+      "nameEn": "Maha Shivaratri",
+      "type": "religious",
+      "emoji": "🔱"
+    },
+    "11-27": {
+      "name": "फागु पूर्णिमा",
+      "nameEn": "Holi",
+      "type": "festival",
+      "emoji": "🎨"
+    },
+    "12-11": {
+      "name": "शहीद दिवस",
+      "nameEn": "Martyrs Day",
+      "type": "national",
+      "emoji": "🕯️"
+    },
+    "12-17": {
+      "name": "राम नवमी",
+      "nameEn": "Ram Navami",
+      "type": "religious",
+      "emoji": "🙏"
+    }
   },
   "2083": {
-    "1-1":   { "name": "नयाँ वर्ष", "nameEn": "New Year", "type": "national", "emoji": "🎊" },
-    "1-18":  { "name": "बुद्ध जयन्ती / श्रम दिवस", "nameEn": "Buddha Jayanti · Labour Day", "type": "religious", "emoji": "🙏" },
-    "2-13":  { "name": "ईद-उल-अज्हा", "nameEn": "Eid al-Adha", "type": "religious", "emoji": "🕌" },
-    "2-15":  { "name": "गणतन्त्र दिवस", "nameEn": "Republic Day", "type": "national", "emoji": "🇳🇵" },
-    "5-12":  { "name": "जनै पूर्णिमा / रक्षाबन्धन", "nameEn": "Janai Purnima", "type": "religious", "emoji": "🧵" },
-    "5-13":  { "name": "गाईजात्रा", "nameEn": "Gai Jatra", "type": "festival", "emoji": "🐄" },
-    "5-19":  { "name": "श्री कृष्ण जन्माष्टमी", "nameEn": "Krishna Janmashtami", "type": "religious", "emoji": "🙏" },
-    "5-29":  { "name": "हरितालिका तीज", "nameEn": "Teej", "type": "festival", "emoji": "💃" },
-    "5-31":  { "name": "ऋषि पञ्चमी", "nameEn": "Rishi Panchami", "type": "religious", "emoji": "🙏" },
-    "6-3":   { "name": "संविधान दिवस", "nameEn": "Constitution Day", "type": "national", "emoji": "📜" },
-    "6-9":   { "name": "इन्द्रजात्रा", "nameEn": "Indra Jatra", "type": "festival", "emoji": "🎭" },
-    "6-26":  { "name": "घटस्थापना", "nameEn": "Ghatasthapana", "type": "festival", "emoji": "🌱" },
-    "7-1":   { "name": "फूलपाती", "nameEn": "Fulpati", "type": "festival", "emoji": "🌸" },
-    "7-2":   { "name": "महा अष्टमी", "nameEn": "Maha Ashtami", "type": "festival", "emoji": "🙏" },
-    "7-3":   { "name": "महा नवमी", "nameEn": "Maha Navami", "type": "festival", "emoji": "🙏" },
-    "7-4":   { "name": "विजया दशमी", "nameEn": "Vijaya Dashami (Dashain)", "type": "festival", "emoji": "🎊" },
-    "7-22":  { "name": "लक्ष्मी पूजा", "nameEn": "Tihar - Laxmi Puja", "type": "festival", "emoji": "🪔" },
-    "7-24":  { "name": "गोवर्धन पूजा / म्हः पूजा", "nameEn": "Tihar - Govardhan Puja", "type": "festival", "emoji": "🐄" },
-    "7-25":  { "name": "भाई टीका", "nameEn": "Tihar - Bhai Tika", "type": "festival", "emoji": "👫" },
-    "7-29":  { "name": "छठ पर्व", "nameEn": "Chhath Parva", "type": "festival", "emoji": "🌅" },
-    "9-10":  { "name": "क्रिसमस", "nameEn": "Christmas Day", "type": "religious", "emoji": "🎄" },
-    "9-15":  { "name": "तमु ल्होसार", "nameEn": "Tamu Lhosar", "type": "festival", "emoji": "🏔️" },
-    "10-1":  { "name": "माघी / माघे संक्रान्ति", "nameEn": "Maghi", "type": "festival", "emoji": "🌊" },
-    "10-16": { "name": "शहीद दिवस", "nameEn": "Martyrs Day", "type": "national", "emoji": "🕯️" },
-    "10-28": { "name": "सरस्वती पूजा", "nameEn": "Saraswati Puja", "type": "religious", "emoji": "📚" },
-    "11-7":  { "name": "प्रजातन्त्र दिवस", "nameEn": "Democracy Day", "type": "national", "emoji": "🏛️" },
-    "11-22": { "name": "महा शिवरात्रि", "nameEn": "Maha Shivaratri", "type": "religious", "emoji": "🔱" },
-    "11-24": { "name": "अन्तर्राष्ट्रिय महिला दिवस", "nameEn": "Women's Day", "type": "national", "emoji": "👩" },
-    "12-7":  { "name": "फागु पूर्णिमा (पहाड)", "nameEn": "Holi (Hills)", "type": "festival", "emoji": "🎨" },
-    "12-8":  { "name": "फागु पूर्णिमा (तराई)", "nameEn": "Holi (Terai)", "type": "festival", "emoji": "🎨" }
-  }
+    "1-1": {
+      "name": "नयाँ वर्ष",
+      "nameEn": "New Year",
+      "type": "national",
+      "emoji": "🎊"
+    },
+    "1-18": {
+      "name": "बुद्ध जयन्ती / श्रम दिवस",
+      "nameEn": "Buddha Jayanti · Labour Day",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "2-13": {
+      "name": "ईद-उल-अज्हा",
+      "nameEn": "Eid al-Adha",
+      "type": "religious",
+      "emoji": "🕌"
+    },
+    "2-15": {
+      "name": "गणतन्त्र दिवस",
+      "nameEn": "Republic Day",
+      "type": "national",
+      "emoji": "🇳🇵"
+    },
+    "5-12": {
+      "name": "जनै पूर्णिमा / रक्षाबन्धन",
+      "nameEn": "Janai Purnima",
+      "type": "religious",
+      "emoji": "🧵"
+    },
+    "5-13": {
+      "name": "गाईजात्रा",
+      "nameEn": "Gai Jatra",
+      "type": "festival",
+      "emoji": "🐄"
+    },
+    "5-19": {
+      "name": "श्री कृष्ण जन्माष्टमी",
+      "nameEn": "Krishna Janmashtami",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "5-29": {
+      "name": "हरितालिका तीज",
+      "nameEn": "Teej",
+      "type": "festival",
+      "emoji": "💃"
+    },
+    "5-31": {
+      "name": "ऋषि पञ्चमी",
+      "nameEn": "Rishi Panchami",
+      "type": "religious",
+      "emoji": "🙏"
+    },
+    "6-3": {
+      "name": "संविधान दिवस",
+      "nameEn": "Constitution Day",
+      "type": "national",
+      "emoji": "📜"
+    },
+    "6-9": {
+      "name": "इन्द्रजात्रा",
+      "nameEn": "Indra Jatra",
+      "type": "festival",
+      "emoji": "🎭"
+    },
+    "6-26": {
+      "name": "घटस्थापना",
+      "nameEn": "Ghatasthapana",
+      "type": "festival",
+      "emoji": "🌱"
+    },
+    "7-1": {
+      "name": "फूलपाती",
+      "nameEn": "Fulpati",
+      "type": "festival",
+      "emoji": "🌸"
+    },
+    "7-2": {
+      "name": "महा अष्टमी",
+      "nameEn": "Maha Ashtami",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "7-3": {
+      "name": "महा नवमी",
+      "nameEn": "Maha Navami",
+      "type": "festival",
+      "emoji": "🙏"
+    },
+    "7-4": {
+      "name": "विजया दशमी",
+      "nameEn": "Vijaya Dashami (Dashain)",
+      "type": "festival",
+      "emoji": "🎊"
+    },
+    "7-22": {
+      "name": "लक्ष्मी पूजा",
+      "nameEn": "Tihar - Laxmi Puja",
+      "type": "festival",
+      "emoji": "🪔"
+    },
+    "7-24": {
+      "name": "गोवर्धन पूजा / म्हः पूजा",
+      "nameEn": "Tihar - Govardhan Puja",
+      "type": "festival",
+      "emoji": "🐄"
+    },
+    "7-25": {
+      "name": "भाई टीका",
+      "nameEn": "Tihar - Bhai Tika",
+      "type": "festival",
+      "emoji": "👫"
+    },
+    "7-29": {
+      "name": "छठ पर्व",
+      "nameEn": "Chhath Parva",
+      "type": "festival",
+      "emoji": "🌅"
+    },
+    "9-10": {
+      "name": "क्रिसमस",
+      "nameEn": "Christmas Day",
+      "type": "religious",
+      "emoji": "🎄"
+    },
+    "9-15": {
+      "name": "तमु ल्होसार",
+      "nameEn": "Tamu Lhosar",
+      "type": "festival",
+      "emoji": "🏔️"
+    },
+    "10-1": {
+      "name": "माघी / माघे संक्रान्ति",
+      "nameEn": "Maghi",
+      "type": "festival",
+      "emoji": "🌊"
+    },
+    "10-16": {
+      "name": "शहीद दिवस",
+      "nameEn": "Martyrs Day",
+      "type": "national",
+      "emoji": "🕯️"
+    },
+    "10-28": {
+      "name": "सरस्वती पूजा",
+      "nameEn": "Saraswati Puja",
+      "type": "religious",
+      "emoji": "📚"
+    },
+    "11-7": {
+      "name": "प्रजातन्त्र दिवस",
+      "nameEn": "Democracy Day",
+      "type": "national",
+      "emoji": "🏛️"
+    },
+    "11-22": {
+      "name": "महा शिवरात्रि",
+      "nameEn": "Maha Shivaratri",
+      "type": "religious",
+      "emoji": "🔱"
+    },
+    "11-24": {
+      "name": "अन्तर्राष्ट्रिय महिला दिवस",
+      "nameEn": "Women's Day",
+      "type": "national",
+      "emoji": "👩"
+    },
+    "12-7": {
+      "name": "फागु पूर्णिमा (पहाड)",
+      "nameEn": "Holi (Hills)",
+      "type": "festival",
+      "emoji": "🎨"
+    },
+    "12-8": {
+      "name": "फागु पूर्णिमा (तराई)",
+      "nameEn": "Holi (Terai)",
+      "type": "festival",
+      "emoji": "🎨"
+    }
+  },
+  "_comment": "Generated from shared/holidays.js by scripts/sync-shared.js — do not edit by hand. Deploy to update all devices."
 }

@@ -20,6 +20,11 @@ class MitiApp {
     this.bindEvents();
     this.startClock();
 
+    HolidayManager.loadRemote('https://miti-five.vercel.app/data/holidays.json', () => {
+      this.renderPill();
+      if (this.isExpanded) this.renderExpanded();
+    });
+
     // Listen for expand/collapse from Electron
     if (window.electronAPI) {
       window.electronAPI.onToggleExpand((expanded) => {

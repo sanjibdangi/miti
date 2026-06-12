@@ -155,7 +155,47 @@ class HolidayManager {
   }
 }
 
+/**
+ * Merge remote holiday data into HOLIDAYS in place.
+ * Returns true if anything changed. Keys starting with '_' are metadata.
+ */
+HolidayManager.applyRemoteData = function (data) {
+  let changed = false;
+  for (const y of Object.keys(data || {})) {
+    if (y.startsWith('_')) continue;
+    if (JSON.stringify(HOLIDAYS[y]) !== JSON.stringify(data[y])) {
+      HOLIDAYS[y] = data[y];
+      changed = true;
+    }
+  }
+  return changed;
+};
+
+/**
+ * Load live holiday data: apply the last cached copy synchronously, then
+ * refresh from the network. Calls onUpdate() whenever the data changed so
+ * the caller can re-render. Offline → cached/built-in data stays.
+ */
+HolidayManager.loadRemote = function (url, onUpdate) {
+  const KEY = 'miti_holidays_remote';
+  try {
+    const cached = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (cached && HolidayManager.applyRemoteData(cached) && onUpdate) onUpdate();
+  } catch (e) { /* corrupt cache — ignore */ }
+  fetch(url, { cache: 'no-store' })
+    .then((res) => (res.ok ? res.json() : null))
+    .then((data) => {
+      if (!data) return;
+      localStorage.setItem(KEY, JSON.stringify(data));
+      if (HolidayManager.applyRemoteData(data) && onUpdate) onUpdate();
+    })
+    .catch(() => {});
+};
+
 if (typeof window !== 'undefined') {
   window.HolidayManager = HolidayManager;
   window.HOLIDAYS = HOLIDAYS;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { HOLIDAYS, HolidayManager };
 }
