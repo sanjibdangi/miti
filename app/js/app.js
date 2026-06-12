@@ -156,7 +156,6 @@ const views = {
     const adDate = new Date();
     const holiday = HolidayManager.getHoliday(bs.year, bs.month, bs.day);
     const isSat = bs.dayOfWeek === 6;
-    const observances = HolidayManager.getTodayObservances(conv);
     const upcoming = HolidayManager.getUpcomingHolidays(conv, 4);
     const todayEvs = eventsOn(bs.year, bs.month, bs.day);
     const nextEvs = state.events
@@ -174,7 +173,6 @@ const views = {
         <div class="hero-clock" id="hero-clock"></div>
         ${holiday ? `<div class="hero-badge">${holiday.emoji} ${state.lang === 'np' ? holiday.name : holiday.nameEn}</div>`
         : isSat ? `<div class="hero-badge">🔴 ${t('saturday')}</div>` : ''}
-        ${observances.map((o) => `<div class="hero-badge" title="${o.note || ''}">${o.emoji} ${state.lang === 'np' ? o.name : o.nameEn}</div>`).join('')}
         <div class="hero-actions">
           <button class="btn" id="copy-today">📋 ${t('copy')}</button>
           <button class="btn" id="share-today">📤 ${t('share')}</button>
@@ -283,6 +281,18 @@ const views = {
           <div class="list-sub">${fmtNum(h.day)} ${monthName(month)}</div></div>
         </div>`).join('')}
       </div>` : ''}
+      ${(() => {
+        const obs = (OBSERVANCES[year] || []).filter((o) => {
+          const fm = Number(o.from.split('-')[0]), tm = Number(o.to.split('-')[0]);
+          return month >= fm && month <= tm;
+        });
+        if (!obs.length) return '';
+        return `<div class="card" style="opacity:.75;font-size:13px;line-height:1.7">${obs.map((o) => {
+          const [fm, fd] = o.from.split('-').map(Number), [tm, td] = o.to.split('-').map(Number);
+          const range = `${fmtNum(fd)} ${monthName(fm)} – ${fmtNum(td)} ${monthName(tm)}`;
+          return `${o.emoji} <b>${state.lang === 'np' ? o.name : o.nameEn}</b> · ${range}${o.note ? `<br><span style="opacity:.8">${o.note}</span>` : ''}`;
+        }).join('<hr style="border:none;border-top:1px solid rgba(128,128,128,.15);margin:8px 0">')}</div>`;
+      })()}
     `;
   },
 

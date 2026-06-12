@@ -305,22 +305,6 @@ class MitiApp {
 
     let html = `
       <div class="holidays-view">
-    `;
-
-    for (const o of observances) {
-      html += `
-        <div class="holiday-item holiday-type-religious observance-banner">
-          <div class="holiday-emoji">${o.emoji}</div>
-          <div class="holiday-info">
-            <div class="holiday-name">${o.nameEn} — ongoing</div>
-            <div class="holiday-name-np">${o.name}</div>
-            <div class="holiday-dates">${o.note || ''}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    html += `
         <h3 class="section-title">🎊 Upcoming Holidays & Festivals</h3>
         <div class="holiday-list">
     `;
@@ -354,7 +338,17 @@ class MitiApp {
       `;
     }
 
-    html += '</div></div>';
+    html += '</div>';
+
+    if (observances.length) {
+      html += `
+        <div class="observance-note">
+          ${observances.map(o => `${o.emoji} <b>${o.nameEn}</b> (${o.name})${o.note ? ` — ${o.note}` : ''}`).join('<br>')}
+        </div>
+      `;
+    }
+
+    html += '</div>';
     container.innerHTML = html;
   }
 
@@ -544,6 +538,8 @@ class MitiApp {
           </div>
         </div>
         ${info.holiday ? `<div class="detail-holiday">${info.holiday.emoji} ${info.holiday.nameEn} (${info.holiday.name})</div>` : ''}
+        ${HolidayManager.getObservances(info.bs.year, info.bs.month, info.bs.day).map(o =>
+          `<div class="detail-observance">${o.emoji} ${o.nameEn} (${o.name})${o.note ? ` — ${o.note}` : ''}</div>`).join('')}
         <div class="detail-actions">
           <button class="detail-btn copy-btn" data-copy="${info.bsFormatted} BS | ${info.adFormatted}">
             📋 Copy
