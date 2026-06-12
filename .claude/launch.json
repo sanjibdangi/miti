@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "miti-pro",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "./app", "-p", "3100", "-s"],
+      "port": 3100
+    },
+    {
+      "name": "pwa",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "./pwa", "-p", "3000", "-s", "-c-1"],
+      "port": 3000
+    }
+  ]
+}

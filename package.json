@@ -1,0 +1,70 @@
+{
+  "name": "miti",
+  "version": "1.0.0",
+  "description": "Miti (मिति) — Premium Nepali/English Dual Date Desktop Widget",
+  "main": "main.js",
+  "scripts": {
+    "sync": "node scripts/sync-shared.js",
+    "prestart": "npm run sync",
+    "predev": "npm run sync",
+    "prebuild": "npm run sync",
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder --win",
+    "deploy": "npm run sync && vercel deploy --prod --yes --cwd app",
+    "build:portable": "electron-builder --win portable",
+    "pwa": "npx http-server ./pwa -p 3000 -o",
+    "app": "npx http-server ./app -p 3100 -o"
+  },
+  "author": "Miti",
+  "license": "MIT",
+  "dependencies": {
+    "auto-launch": "^5.0.6",
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5"
+  },
+  "build": {
+    "appId": "com.miti.datewidget",
+    "productName": "Miti",
+    "copyright": "Copyright © 2026 Miti",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "src/assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "src/assets/icon.ico",
+      "uninstallerIcon": "src/assets/icon.ico",
+      "shortcutName": "Miti"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

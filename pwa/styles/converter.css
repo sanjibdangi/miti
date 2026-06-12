@@ -1,0 +1,299 @@
+/**
+ * Miti — Converter & Dialog Styles
+ */
+
+/* ===== Converter View ===== */
+.converter-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.converter-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.converter-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.flag-icon {
+  font-size: 16px;
+}
+
+.converter-inputs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 3px;
+}
+
+.converter-input {
+  font-size: var(--font-size-sm);
+  padding: 6px 8px;
+}
+
+/* ===== Convert Button ===== */
+.convert-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--nepal-crimson), var(--nepal-crimson-dark));
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+.convert-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.4);
+}
+
+.convert-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(220, 20, 60, 0.3);
+}
+
+/* ===== Result Card ===== */
+.convert-result {
+  margin-top: var(--space-sm);
+}
+
+.result-card {
+  background: var(--bg-surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  text-align: center;
+  animation: fadeInUp 0.3s ease;
+}
+
+.result-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-bottom: 4px;
+}
+
+.result-date {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.result-date-np {
+  font-family: var(--font-np);
+  font-size: var(--font-size-base);
+  color: var(--text-accent);
+  margin-top: 2px;
+}
+
+.result-date.ad {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.result-day {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+
+.result-error {
+  color: var(--nepal-crimson);
+  font-size: var(--font-size-sm);
+  padding: var(--space-sm);
+  background: rgba(220, 20, 60, 0.08);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  animation: shake 0.3s ease;
+}
+
+.copy-result-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 4px 14px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+}
+
+.copy-result-btn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+/* ===== Divider ===== */
+.converter-divider {
+  text-align: center;
+  position: relative;
+}
+
+.divider-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+/* ===== Bookmark Dialog ===== */
+.bookmark-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.bookmark-dialog.visible {
+  opacity: 1;
+}
+
+.dialog-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  position: relative;
+  background: var(--bg-glass-heavy);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  width: 320px;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.9);
+  transition: transform var(--transition-spring);
+}
+
+.bookmark-dialog.visible .dialog-content {
+  transform: scale(1);
+}
+
+.dialog-content h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.dialog-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-accent);
+  margin-bottom: var(--space-lg);
+}
+
+.dialog-field {
+  margin-bottom: var(--space-md);
+}
+
+/* Color Picker */
+.color-picker {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.color-opt {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.color-opt:hover {
+  transform: scale(1.2);
+}
+
+.color-opt.selected {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Dialog Actions */
+.dialog-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.dialog-btn {
+  flex: 1;
+  padding: 8px 16px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.dialog-btn.cancel {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.dialog-btn.cancel:hover {
+  background: var(--bg-surface-hover);
+}
+
+.dialog-btn.save {
+  background: linear-gradient(135deg, var(--nepal-crimson), var(--nepal-crimson-dark));
+  color: white;
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.3);
+}
+
+.dialog-btn.save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 20, 60, 0.4);
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+app/.vercel/
+.vercel/
+build-log.txt
+*.log
+Thumbs.db
+.DS_Store

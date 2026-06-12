@@ -1,0 +1,186 @@
+/**
+ * Miti — Animations & Keyframes
+ */
+
+/* ===== Fade In Up ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Pulse Dot (Today indicator) ===== */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1.5);
+  }
+}
+
+/* ===== Shake (Error) ===== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ===== Slide transitions for calendar navigation ===== */
+.slide-out-left {
+  animation: slideOutLeft 0.15s ease-in forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.15s ease-in forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.25s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.25s ease-out forwards;
+}
+
+@keyframes slideOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-20px); }
+}
+
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(20px); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== Glow pulse for today's cell ===== */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(220, 20, 60, 0.3);
+  }
+}
+
+.cal-cell.today {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ===== Staggered cell entrance ===== */
+.cal-cell:not(.empty) {
+  animation: fadeInUp 0.3s ease backwards;
+}
+
+.cal-cell:nth-child(8) { animation-delay: 0.02s; }
+.cal-cell:nth-child(9) { animation-delay: 0.04s; }
+.cal-cell:nth-child(10) { animation-delay: 0.06s; }
+.cal-cell:nth-child(11) { animation-delay: 0.08s; }
+.cal-cell:nth-child(12) { animation-delay: 0.10s; }
+.cal-cell:nth-child(13) { animation-delay: 0.12s; }
+.cal-cell:nth-child(14) { animation-delay: 0.14s; }
+.cal-cell:nth-child(15) { animation-delay: 0.16s; }
+.cal-cell:nth-child(16) { animation-delay: 0.18s; }
+.cal-cell:nth-child(17) { animation-delay: 0.20s; }
+.cal-cell:nth-child(18) { animation-delay: 0.22s; }
+.cal-cell:nth-child(19) { animation-delay: 0.24s; }
+.cal-cell:nth-child(20) { animation-delay: 0.26s; }
+.cal-cell:nth-child(21) { animation-delay: 0.28s; }
+.cal-cell:nth-child(22) { animation-delay: 0.30s; }
+.cal-cell:nth-child(23) { animation-delay: 0.32s; }
+.cal-cell:nth-child(24) { animation-delay: 0.34s; }
+.cal-cell:nth-child(25) { animation-delay: 0.36s; }
+.cal-cell:nth-child(26) { animation-delay: 0.38s; }
+.cal-cell:nth-child(27) { animation-delay: 0.40s; }
+.cal-cell:nth-child(28) { animation-delay: 0.42s; }
+.cal-cell:nth-child(29) { animation-delay: 0.44s; }
+.cal-cell:nth-child(30) { animation-delay: 0.46s; }
+.cal-cell:nth-child(31) { animation-delay: 0.48s; }
+.cal-cell:nth-child(32) { animation-delay: 0.50s; }
+.cal-cell:nth-child(33) { animation-delay: 0.52s; }
+.cal-cell:nth-child(34) { animation-delay: 0.54s; }
+.cal-cell:nth-child(35) { animation-delay: 0.56s; }
+.cal-cell:nth-child(36) { animation-delay: 0.58s; }
+.cal-cell:nth-child(37) { animation-delay: 0.60s; }
+.cal-cell:nth-child(38) { animation-delay: 0.62s; }
+.cal-cell:nth-child(39) { animation-delay: 0.64s; }
+.cal-cell:nth-child(40) { animation-delay: 0.66s; }
+.cal-cell:nth-child(41) { animation-delay: 0.68s; }
+.cal-cell:nth-child(42) { animation-delay: 0.70s; }
+.cal-cell:nth-child(43) { animation-delay: 0.72s; }
+.cal-cell:nth-child(44) { animation-delay: 0.74s; }
+
+/* ===== Holiday item entrance ===== */
+.holiday-item {
+  animation: fadeInUp 0.3s ease backwards;
+}
+
+.holiday-item:nth-child(1) { animation-delay: 0.05s; }
+.holiday-item:nth-child(2) { animation-delay: 0.10s; }
+.holiday-item:nth-child(3) { animation-delay: 0.15s; }
+.holiday-item:nth-child(4) { animation-delay: 0.20s; }
+.holiday-item:nth-child(5) { animation-delay: 0.25s; }
+.holiday-item:nth-child(6) { animation-delay: 0.30s; }
+.holiday-item:nth-child(7) { animation-delay: 0.35s; }
+.holiday-item:nth-child(8) { animation-delay: 0.40s; }
+.holiday-item:nth-child(9) { animation-delay: 0.45s; }
+.holiday-item:nth-child(10) { animation-delay: 0.50s; }
+
+/* ===== Bookmark item entrance ===== */
+.bookmark-item {
+  animation: fadeInUp 0.3s ease backwards;
+}
+
+.bookmark-item:nth-child(1) { animation-delay: 0.05s; }
+.bookmark-item:nth-child(2) { animation-delay: 0.10s; }
+.bookmark-item:nth-child(3) { animation-delay: 0.15s; }
+.bookmark-item:nth-child(4) { animation-delay: 0.20s; }
+.bookmark-item:nth-child(5) { animation-delay: 0.25s; }
+
+/* ===== Tab content change ===== */
+.expanded-content > * {
+  animation: fadeInUp 0.25s ease;
+}
+
+/* ===== Button hover glow ===== */
+.convert-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+}
+
+.convert-btn:hover::after {
+  opacity: 1;
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01s !important;
+  }
+}
