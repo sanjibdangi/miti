@@ -9,7 +9,8 @@ class MitiApp {
     this.calendar = new CalendarRenderer(this.converter, this.bookmarks);
     this.isExpanded = false;
     this.currentTab = 'calendar';
-    this.theme = localStorage.getItem('miti_theme') || 'dark';
+    this.theme = (window.electronAPI && window.electronAPI.storeGet && window.electronAPI.storeGet('miti_theme'))
+      || localStorage.getItem('miti_theme') || 'dark';
     this.init();
   }
 
@@ -46,7 +47,11 @@ class MitiApp {
    */
   toggleTheme() {
     this.theme = this.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('miti_theme', this.theme);
+    if (window.electronAPI && window.electronAPI.storeSet) {
+      window.electronAPI.storeSet('miti_theme', this.theme);
+    } else {
+      localStorage.setItem('miti_theme', this.theme);
+    }
     this.applyTheme();
   }
 

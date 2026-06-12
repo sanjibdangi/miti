@@ -10,10 +10,24 @@ class BookmarkManager {
   }
 
   /**
-   * Load bookmarks from localStorage
+   * Load bookmarks — electron-store in the desktop app (survives cache
+   * clears), localStorage in the browser. Migrates legacy localStorage
+   * data into electron-store once.
    */
   load() {
     try {
+      if (window.electronAPI && window.electronAPI.storeGet) {
+        const data = window.electronAPI.storeGet(this.storageKey);
+        if (data) return data;
+        const legacy = localStorage.getItem(this.storageKey);
+        if (legacy) {
+          const parsed = JSON.parse(legacy);
+          window.electronAPI.storeSet(this.storageKey, parsed);
+          localStorage.removeItem(this.storageKey);
+          return parsed;
+        }
+        return [];
+      }
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
     } catch {
@@ -21,11 +35,12 @@ class BookmarkManager {
     }
   }
 
-  /**
-   * Save bookmarks to localStorage
-   */
   save() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.bookmarks));
+    if (window.electronAPI && window.electronAPI.storeSet) {
+      window.electronAPI.storeSet(this.storageKey, this.bookmarks);
+    } else {
+      localStorage.setItem(this.storageKey, JSON.stringify(this.bookmarks));
+    }
   }
 
   /**

@@ -6,4 +6,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   closeApp: () => ipcRenderer.send('close-app'),
   setAlwaysOnTop: (value) => ipcRenderer.send('set-always-on-top', value),
   onToggleExpand: (callback) => ipcRenderer.on('toggle-expand', (event, expanded) => callback(expanded)),
+  storeGet: (key) => ipcRenderer.sendSync('store-get', key),
+  storeSet: (key, value) => ipcRenderer.send('store-set', key, value),
 });

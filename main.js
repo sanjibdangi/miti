@@ -1,6 +1,9 @@
 const { app, BrowserWindow, Tray, Menu, ipcMain, nativeImage, screen } = require('electron');
 const path = require('path');
 const AutoLaunch = require('auto-launch');
+const Store = require('electron-store');
+
+const store = new Store();
 
 let mainWindow;
 let tray;
@@ -19,11 +22,21 @@ const autoLauncher = new AutoLaunch({
 function createWindow() {
   const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
 
+  // Restore last position if it's still on-screen
+  const savedPos = store.get('windowPos', null);
+  let startX = screenWidth - PILL_WIDTH - 20;
+  let startY = 20;
+  if (savedPos && savedPos.x >= 0 && savedPos.y >= 0 &&
+      savedPos.x + PILL_WIDTH <= screenWidth && savedPos.y + PILL_HEIGHT <= screenHeight) {
+    startX = savedPos.x;
+    startY = savedPos.y;
+  }
+
   mainWindow = new BrowserWindow({
     width: PILL_WIDTH,
     height: PILL_HEIGHT,
-    x: screenWidth - PILL_WIDTH - 20,
-    y: 20,
+    x: startX,
+    y: startY,
     frame: false,
     transparent: true,
     alwaysOnTop: true,
@@ -44,6 +57,12 @@ function createWindow() {
   // Enable dragging
   mainWindow.on('will-move', () => {
     // Allow window to be dragged
+  });
+
+  mainWindow.on('moved', () => {
+    if (!mainWindow || isExpanded) return;
+    const [x, y] = mainWindow.getPosition();
+    store.set('windowPos', { x, y });
   });
 
   mainWindow.on('closed', () => {
@@ -168,6 +187,15 @@ ipcMain.on('close-app', () => {
 
 ipcMain.on('set-always-on-top', (event, value) => {
   if (mainWindow) mainWindow.setAlwaysOnTop(value);
+});
+
+// Persistent key-value storage for the renderer (bookmarks, theme, caches)
+ipcMain.on('store-get', (event, key) => {
+  event.returnValue = store.get(key, null);
+});
+
+ipcMain.on('store-set', (event, key, value) => {
+  store.set(key, value);
 });
 
 // App lifecycle
