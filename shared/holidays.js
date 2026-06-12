@@ -79,7 +79,8 @@ const HOLIDAYS = {
 const OBSERVANCES = {
   2083: [
     {
-      from: '2-1', to: '2-31',
+      // Jestha 3 – Asar 1, 2083 = May 17 – Jun 15, 2026 (hamropatro/onlinekhabar)
+      from: '2-3', to: '3-1',
       name: 'मलमास (अधिक मास)', nameEn: 'Mala Maas (Adhik Maas)',
       type: 'observance', emoji: '🌙',
       note: 'Extra lunar month — auspicious ceremonies traditionally avoided',
