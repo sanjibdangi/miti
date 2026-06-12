@@ -12,6 +12,7 @@
     "dev": "electron . --dev",
     "build": "electron-builder --win",
     "deploy": "npm run sync && vercel deploy --prod --yes --cwd app",
+    "test": "npm run sync && node --test",
     "build:portable": "electron-builder --win portable",
     "pwa": "npx http-server ./pwa -p 3000 -o",
     "app": "npx http-server ./app -p 3100 -o"

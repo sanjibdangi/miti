@@ -207,3 +207,6 @@ class DateConverter {
 if (typeof window !== 'undefined') {
   window.DateConverter = DateConverter;
 }
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = DateConverter;
+}
