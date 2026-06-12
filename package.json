@@ -21,7 +21,8 @@
   "license": "MIT",
   "dependencies": {
     "auto-launch": "^5.0.6",
-    "electron-store": "^8.1.0"
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.8.9"
   },
   "devDependencies": {
     "electron": "^42.4.0",
@@ -66,6 +67,13 @@
     ],
     "directories": {
       "output": "dist"
-    }
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "sanjibdangi",
+        "repo": "miti"
+      }
+    ]
   }
 }

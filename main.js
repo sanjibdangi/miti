@@ -2,6 +2,7 @@ const { app, BrowserWindow, Tray, Menu, ipcMain, nativeImage, screen } = require
 const path = require('path');
 const AutoLaunch = require('auto-launch');
 const Store = require('electron-store');
+const { autoUpdater } = require('electron-updater');
 
 const store = new Store();
 
@@ -207,6 +208,14 @@ app.whenReady().then(() => {
   autoLauncher.isEnabled().then((isEnabled) => {
     if (!isEnabled) autoLauncher.enable();
   });
+
+  // Auto-update from GitHub Releases (packaged builds only).
+  // Downloads in the background and installs on next app quit.
+  if (app.isPackaged) {
+    const checkForUpdates = () => autoUpdater.checkForUpdatesAndNotify().catch(() => {});
+    checkForUpdates();
+    setInterval(checkForUpdates, 6 * 60 * 60 * 1000);
+  }
 });
 
 app.on('window-all-closed', () => {
